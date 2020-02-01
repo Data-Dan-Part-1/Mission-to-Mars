@@ -6,14 +6,13 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import pandas as pd
 
-
 executable_path = {'https://mars.nasa.gov/news/': 'chromedriver'}
 browser = Browser('chrome',executable_path)
 
 def mars_news(browser):
-    
+
 # Visit the mars nasa news site
-url = 'https://mars.nasa.gov/news/'
+url='https://mars.nasa.gov/news/'
 browser.visit(url)
 # Optional delay for loading the page
 browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
@@ -26,14 +25,11 @@ slide_elem.find("div", class_='content_title')
 
 # Use the parent element to find the first `a` tag and save it as `news_title`
 news_title = slide_elem.find("div", class_='content_title').get_text()
-news_title
 
 # Use the parent element to find the paragraph text
 news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
-news_p
 
 return news_title, news_p
-
 # # Featured Images
 
 # Visit URL
@@ -42,31 +38,31 @@ browser.visit(url)
 
 def mars_news(browser):
     
-# Find and click the full image button
-full_image_elem = browser.find_by_id('full_image')
-full_image_elem.click()
+    # Find and click the full image button
+    full_image_elem = browser.find_by_id('full_image')
+    full_image_elem.click()
 
-# Find the more info button and click that
-browser.is_element_present_by_text('more info', wait_time=1)
-#more_info_elem = browser.find_link_by_partial_text('more info') Code in Module 10.3.4
-more_info_elem = browser.links.find_by_partial_text('more info')
-more_info_elem.click()
+    # Find the more info button and click that
+    browser.is_element_present_by_text('more info', wait_time=1)
+    #more_info_elem = browser.find_link_by_partial_text('more info') Code in Module 10.3.4
+    more_info_elem = browser.links.find_by_partial_text('more info')
+    more_info_elem.click()
 
-# Parse the resulting html with soup
-html = browser.html
-img_soup = BeautifulSoup(html, 'html.parser')
+    # Parse the resulting html with soup
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
 
     try:
         # Find the relative image url
         img_url_rel = img_soup.select_one('figure.lede a img').get("src")
 
     except AttributeError:
-       return None
+        return None
 
-# Use the base URL to create an absolute URL
-img_url = f'https://www.jpl.nasa.gov{img_url_rel}'
+    # Use the base URL to create an absolute URL
+    img_url = f'https://www.jpl.nasa.gov{img_url_rel}'
 
-return img_url
+    return img_url
 
 def mars_facts():
 
@@ -76,7 +72,7 @@ def mars_facts():
         df = pd.read_html('http://space-facts.com/mars/')[0]
             
     except BaseException:
-       return: None
+       return None
         
         df.columns=['description', 'value']
         df.set_index('description', inplace=True)
