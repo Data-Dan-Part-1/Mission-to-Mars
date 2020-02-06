@@ -87,11 +87,19 @@ def featured_image(browser):
 
 def mars_facts():
 
+    #url = 'http://space-facts.com/mars/'
+    #browser.visit(url)
+
     try:            
 #Using Pandas to read HTML of websites and identify the first table and pull
         df = pd.read_html('http://space-facts.com/mars/')[0]
-
-    except BaseException:
+        df = pd.read_html('http://space-facts.com/mars/')[0]
+        print('___')
+        print(df)
+        print('___')
+    except Exception as e:
+        print("error")
+        print(e)
         return None
 
     df.columns=['description', 'value']
@@ -99,7 +107,7 @@ def mars_facts():
        
 #df's are images and static... Must be converted to HTML code again (below cell)
 # Convert dataframe into HTML format, add bootstrap
-    return df.to_html()
+    return df.to_html(classes="table table-striped")
 
 def hemispheres(browser):
     # A way to break up long strings

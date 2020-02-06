@@ -8,7 +8,6 @@
     <link 
         rel="stylesheet" 
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    />
 </head>
 <body>
     <div class="container">
@@ -37,13 +36,12 @@
           <h2>Featured Mars Image</h2>
           <img src="{{ mars.featured_image}}" class="img-responsive" alt="Responsive image"/>
       </div>
-      <!-- Mars Facts -->
+      <!-- Mars Facts -->  
       <div class="col-md-4">
         <h4>Mars Facts</h4>
         {{mars.facts | safe}}
       </div>
     </div>
-  </div>
 <!-- Section for Mars Hemispheres -->
   <div class="row" id="mars-hemispheres">
     <div class="page-header">
