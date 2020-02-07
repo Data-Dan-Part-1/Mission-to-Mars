@@ -1,4 +1,3 @@
 # Completed Portfolio
 
-
-Screen Shot 2020-02-07 at 11.09.02 AM.png
+https://github.com/DaterDan/Mission-to-Mars/blob/master/Screen%20Shot%202020-02-07%20at%2011.09.02%20AM.png
